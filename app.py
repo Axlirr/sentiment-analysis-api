@@ -5,8 +5,13 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from model import analyzer
 import uvicorn
+import os
 
 app = FastAPI(title="Sentiment Analysis API")
+
+# Create directories if they don't exist
+os.makedirs("static", exist_ok=True)
+os.makedirs("templates", exist_ok=True)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
